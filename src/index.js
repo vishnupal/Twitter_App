@@ -11,5 +11,7 @@ app.listen(PORT, async () => {
   await connect();
   console.log('Mongo db connected');
   const ser = new service();
-  await ser.create({ content: 'Done with #refacor?' });
+  await ser.create({
+    content: 'Hi #PaRTy kesi bolti public matchre bhidu log ',
+  });
 });
