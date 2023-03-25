@@ -8,7 +8,13 @@ const commentSchema = new mongoose.Schema(
     userEmail: {
       type: String,
     },
+    onModel: {
+      type: String,
+      required: true,
+      enum: ['Tweet', 'Comment'],
+    },
   },
+
   { timestamps: true }
 );
 
