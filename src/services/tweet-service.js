@@ -25,6 +25,14 @@ class TweetService {
     });
     return tweet;
   }
+  async get(tweetId) {
+    try {
+      const tweet = await this.tweetRepository.getWithComment(tweetId);
+      return tweet;
+    } catch (error) {
+      throw new Error('Something gone wrong repo');
+    }
+  }
 }
 
 export default TweetService;

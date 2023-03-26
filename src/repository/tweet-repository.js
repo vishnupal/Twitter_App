@@ -14,7 +14,14 @@ class TweetRepository extends CrudRepository {
   }
   async getWithComment(id) {
     try {
-      const tweet = await Tweet.findById(id).populate('comments').lean();
+      const tweet = await Tweet.findById(id)
+        .populate({
+          path: 'comments',
+          model: 'Comment',
+          populate: { path: 'comments', model: 'Comment' },
+        })
+        .populate({ path: 'likes', model: 'Like' })
+        .lean();
       return tweet;
     } catch (error) {
       console.log(error);
